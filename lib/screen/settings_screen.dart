@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 class SettingScreen extends StatelessWidget {
   SettingScreen({Key? key}) : super(key: key);
@@ -31,6 +32,15 @@ class SettingScreen extends StatelessWidget {
                       ),
                     ))
                 .toList()),
+        ElevatedButton(
+            onPressed: () async {
+              var box = await Hive.openBox('testBox');
+
+              box.put('name', 'David');
+
+              print('Name: ${box.get('name')}');
+            },
+            child: Text("add"))
       ],
     ));
   }
