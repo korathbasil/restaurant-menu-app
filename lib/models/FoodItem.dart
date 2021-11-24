@@ -5,11 +5,8 @@ class FoodItem extends HiveObject {
   FoodItem({required String name, required double price});
 
   @HiveField(0)
-  late int? id;
-
-  @HiveField(1)
   late String name;
 
-  @HiveField(3)
+  @HiveField(1)
   late double price;
 }

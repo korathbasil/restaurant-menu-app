@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:restaurant_menu_app/models/FoodItem.dart';
 
 class SettingScreen extends StatelessWidget {
   SettingScreen({Key? key}) : super(key: key);
@@ -34,11 +35,15 @@ class SettingScreen extends StatelessWidget {
                 .toList()),
         ElevatedButton(
             onPressed: () async {
-              var box = await Hive.openBox('testBox');
+              //   var box = await Hive.openBox<FoodItem>('menu');
 
-              box.put('name', 'David');
+              //   final foodItem = FoodItem(name: "Pasta", price: 120);
 
-              print('Name: ${box.get('name')}');
+              //   box.add(foodItem);
+
+              //   final name = box.get
+
+              //   print('Name: ${box.get('name')}');
             },
             child: Text("add"))
       ],
