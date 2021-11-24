@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:restaurant_menu_app/models/Bill.dart';
 import 'package:restaurant_menu_app/models/FoodItem.dart';
+import 'package:restaurant_menu_app/screen/bill_screen.dart';
+import 'package:restaurant_menu_app/services/bill.services.dart';
 import 'package:restaurant_menu_app/services/food_item.service.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -45,7 +48,9 @@ class MenuScreen extends StatelessWidget {
                             ],
                           ),
                           ElevatedButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                addToBill(BillItem(item: items[n]));
+                              },
                               icon: const Icon(Icons.add),
                               label: const Text("Add"))
                           // CupertinoButton.filled(
@@ -60,7 +65,15 @@ class MenuScreen extends StatelessWidget {
                   itemCount: items.length);
             },
             valueListenable: foodItemNotifier,
-          ))
+          )),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const BillScreen()));
+              },
+              child: const Text("To Biller"))
         ],
       ),
     );

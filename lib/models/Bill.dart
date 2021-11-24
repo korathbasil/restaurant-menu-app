@@ -8,7 +8,7 @@ class Bill {
 
 class BillItem {
   late FoodItem item;
-  late int count;
+  int count = 1;
 
   BillItem({required FoodItem this.item});
 }

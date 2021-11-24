@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:restaurant_menu_app/models/FoodItem.dart';
+import 'package:restaurant_menu_app/models/Bill.dart';
+import 'package:restaurant_menu_app/services/bill.services.dart';
 
 class SettingScreen extends StatelessWidget {
   SettingScreen({Key? key}) : super(key: key);
@@ -33,19 +33,20 @@ class SettingScreen extends StatelessWidget {
                       ),
                     ))
                 .toList()),
-        ElevatedButton(
-            onPressed: () async {
-              //   var box = await Hive.openBox<FoodItem>('menu');
-
-              //   final foodItem = FoodItem(name: "Pasta", price: 120);
-
-              //   box.add(foodItem);
-
-              //   final name = box.get
-
-              //   print('Name: ${box.get('name')}');
-            },
-            child: Text("add"))
+        Expanded(
+            child: ValueListenableBuilder(
+          builder: (BuildContext ctx, List<BillItem> items, Widget? child) {
+            return ListView.separated(
+                itemBuilder: (ctx, n) {
+                  return Text(items[n].item.name);
+                },
+                separatorBuilder: (ctx, n) {
+                  return const Divider();
+                },
+                itemCount: billItems.length);
+          },
+          valueListenable: billItemsNotifier,
+        ))
       ],
     ));
   }
