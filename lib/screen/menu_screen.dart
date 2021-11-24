@@ -4,16 +4,7 @@ import 'package:restaurant_menu_app/models/FoodItem.dart';
 import 'package:restaurant_menu_app/services/food_item.service.dart';
 
 class MenuScreen extends StatelessWidget {
-  MenuScreen({Key? key}) : super(key: key);
-
-  final _menuItems = [
-    {"name": "Biriyani", "price": 140},
-    {"name": "Fried Rice", "price": 120},
-    {"name": "Noodles", "price": 120},
-    {"name": "Chicken 65", "price": 150},
-    {"name": "Chicken Lollipop", "price": 180},
-    {"name": "Tandooi Chicken", "price": 350},
-  ];
+  const MenuScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
