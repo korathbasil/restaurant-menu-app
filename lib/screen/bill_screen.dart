@@ -10,7 +10,12 @@ class BillScreen extends StatelessWidget {
   createTableRows(List<BillItem> items) {
     List<TableRow> tableRows = [
       TableRow(
-        children: const [Text("#"), Text("Item"), Text("Qty"), Text("Price")],
+        children: const [
+          TableColumnCell(text: "#"),
+          TableColumnCell(text: "Item"),
+          TableColumnCell(text: "Qty"),
+          TableColumnCell(text: "Price")
+        ],
       )
     ];
 
@@ -20,18 +25,22 @@ class BillScreen extends StatelessWidget {
       BillItem item,
     ) {
       final TableRow row = TableRow(children: [
-        Text("1"),
-        Text(item.item.name),
-        Text(item.count.toString()),
-        Text((item.item.price * item.count).toString())
+        TableColumnCell(text: "1"),
+        TableColumnCell(text: item.item.name),
+        TableColumnCell(text: item.count.toString()),
+        TableColumnCell(text: (item.item.price * item.count).toString())
       ]);
       tableRows.add(row);
     });
 
     tableRows.add(TableRow(children: [Text(""), Text(""), Text(""), Text("")]));
 
-    tableRows.add(
-        TableRow(children: [Text(""), Text(""), Text("TOTAL"), Text("1300")]));
+    tableRows.add(TableRow(children: [
+      TableColumnCell(text: ""),
+      TableColumnCell(text: ""),
+      TableColumnCell(text: "TOTAL"),
+      TableColumnCell(text: "1300.0")
+    ]));
 
     return tableRows;
   }
@@ -86,6 +95,24 @@ class BillScreen extends StatelessWidget {
           ),
         ],
       )),
+    );
+  }
+}
+
+class TableColumnCell extends StatelessWidget {
+  const TableColumnCell({required String this.text, Key? key})
+      : super(key: key);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(2),
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+      ),
     );
   }
 }
