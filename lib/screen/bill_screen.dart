@@ -14,6 +14,8 @@ class BillScreen extends StatelessWidget {
       )
     ];
 
+    tableRows.add(TableRow(children: [Text(""), Text(""), Text(""), Text("")]));
+
     items.forEach((
       BillItem item,
     ) {
@@ -25,6 +27,8 @@ class BillScreen extends StatelessWidget {
       ]);
       tableRows.add(row);
     });
+
+    tableRows.add(TableRow(children: [Text(""), Text(""), Text(""), Text("")]));
 
     tableRows.add(
         TableRow(children: [Text(""), Text(""), Text("TOTAL"), Text("1300")]));
